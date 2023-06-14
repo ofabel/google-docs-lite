@@ -1,0 +1,18 @@
+@startuml
+
+rectangle Action
+rectangle State
+rectangle View
+
+
+
+Action -> State
+State -> View
+View ..> Action
+
+
+
+@enduml
+
+
+

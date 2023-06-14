@@ -1,0 +1,24 @@
+@startuml
+
+
+
+rectangle Frontend
+
+rectangle Middleware [
+MOM
+Message Oriented Middleware
+] 
+
+rectangle Backend
+
+
+
+Frontend <--> Middleware
+Middleware --> Backend
+
+
+
+@enduml
+
+
+

@@ -1,0 +1,55 @@
+@startuml
+
+
+
+interface MessageClient {
+    connect(url: string): Promise
+    disconnect(): Promise
+    send(message: string): Promise
+    setHandler(callback: (message: string) => void): void
+}
+
+class MQTTClient
+class STOMPClient
+class "..." as ClientImplementationN
+
+
+
+class MessageDispatcher {
+    store: DocumentStore
+    messageQueue: Array<string>
+
+    enqueue(message: string): void
+    setStore(store: DocumentStore): void
+}
+
+
+
+interface DocumentStore {
+
+}
+
+class VueStore
+class MongoDBStore
+class "..." as StoreImplementationN
+
+
+
+MessageClient::setHandler - MessageDispatcher::enqueue
+MessageDispatcher::store - DocumentStore
+
+MessageClient <|.. MQTTClient
+MessageClient <|.. STOMPClient
+MessageClient <|.. ClientImplementationN
+
+DocumentStore <|.. VueStore
+DocumentStore <|.. MongoDBStore
+DocumentStore <|.. StoreImplementationN
+
+
+
+
+@enduml
+
+
+

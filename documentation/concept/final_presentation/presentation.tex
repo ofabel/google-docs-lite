@@ -1,0 +1,98 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage[ngerman]{babel}
+\usepackage{datetime}
+\showdowfalse
+\usepackage{array}
+\usepackage{tabularx}
+% use Swiss-style quotation marks (like in French)
+\usepackage[autostyle,german=swiss]{csquotes}
+\usepackage{framed} % or, "mdframed"
+\makeatletter
+\let\th@plain\relax
+\makeatother
+\usepackage[framed]{ntheorem}
+\theoremstyle{plain}
+\newframedtheorem{framed-def}{Definition}
+
+\definecolor{FHNWyellow}{RGB}{253,231,14}
+\definecolor{titlegrey}{RGB}{158,158,158}
+\definecolor{bodygrey}{RGB}{188,188,188}
+\definecolor{pitchblack}{rgb}{0, 0, 0}
+\setbeamercolor{frametitle}{bg=FHNWyellow, fg=pitchblack}
+\setbeamercolor{headline}{bg=FHNWyellow, fg=pitchblack}
+\setbeamercolor{titlelike}{fg=pitchblack}
+\setbeamercolor{title}{fg=pitchblack}
+\setbeamercolor{item}{fg=pitchblack}
+\setbeamercolor{section in toc}{fg=pitchblack}
+\setbeamercolor{block body example}{fg=pitchblack,bg=bodygrey}
+\setbeamercolor{block title example}{fg=pitchblack,bg=titlegrey}
+\setbeamertemplate{section in toc}[sections numbered]
+\usetheme{default}
+\usecolortheme{wolverine}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+\usetikzlibrary{positioning, calc}
+\usetikzlibrary{intersections}
+\usepackage{./include/tikz-uml}
+\tikzumlset{fill class=white}
+
+\usepackage[export]{adjustbox}
+\usepackage{changepage}
+
+\makeatletter
+
+\usepackage{listings}
+\usepackage{listingsutf8}
+\usepackage{courier}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\lstset{inputencoding=utf8/latin1}
+\lstset{basicstyle=\tiny\ttfamily,breaklines=true}
+
+\title[wodss]{Google Docs Light}
+\subtitle{Final Presentation WODSS}
+\author[Oliver Fabel, Melvin Johner]{Oliver Fabel\\Melvin Johner}
+\newdate{date}{30}{05}{2022}
+\date{\displaydate{date}}
+\institute[FHNW]{
+  Hochschule für Technik\\
+  Fachhochschule Nordwestschweiz
+}
+
+\def\tabularxcolumn#1{m{#1}}
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{footline}{
+  \begin{tabularx}{\textwidth}{XX}
+    \insertframenumber\hfill &
+    \hfill\includegraphics[height=0.5cm]{media/fhnw_10mm.jpg}
+  \end{tabularx}
+}
+
+\begin{document}
+
+\lstdefinestyle{inlinefontsize}{
+  basicstyle=\ttfamily\lst@ifdisplaystyle\scriptsize\fi
+}
+\lstset{style=inlinefontsize}
+
+\input{chapters/01_title.tex}
+
+\input{chapters/02_toc.tex}
+
+\input{chapters/03_architecture.tex}
+\input{chapters/04_bonus-features.tex}
+\input{chapters/06_review.tex}
+\input{chapters/07_outview.tex}
+
+\input{chapters/08_demo.tex}
+
+\input{chapters/09_end.tex}
+
+\end{document}

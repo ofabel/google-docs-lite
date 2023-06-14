@@ -1,0 +1,40 @@
+{
+  "root": {
+    "level": "TRACE",
+    "name": "frontend",
+    "appenders": [
+      {
+        "name": "browser"
+      },
+      {
+        "name": "mqtt"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "level": "INFO",
+      "name": "dispatcher",
+      "appenders": [
+        {
+          "name": "browser"
+        },
+        {
+          "name": "mqtt"
+        }
+      ]
+    }
+  ],
+  "appenders": [
+    {
+      "name": "browser",
+      "type": "Standard"
+    },
+    {
+      "name": "mqtt",
+      "type": "MQTT",
+      "url": "${WODSS_MQTT_PROTOCOL}://${WODSS_MQTT_HOST}:${WODSS_MQTT_PORT}${WODSS_MQTT_PATH}",
+      "topic": "${WODSS_LOGGER_MQTT_TOPIC}"
+    }
+  ]
+}

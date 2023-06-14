@@ -1,0 +1,18 @@
+{
+  "root": {
+    "level": "WARN",
+    "name": "frontend",
+    "appenders": [
+      {
+        "name": "browser"
+      }
+    ]
+  },
+  "categories": [],
+  "appenders": [
+    {
+      "name": "browser",
+      "type": "Standard"
+    }
+  ]
+}

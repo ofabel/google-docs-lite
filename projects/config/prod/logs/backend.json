@@ -1,0 +1,40 @@
+{
+  "root": {
+    "level": "TRACE",
+    "name": "backend",
+    "appenders": [
+      {
+        "name": "console"
+      },
+      {
+        "name": "mqtt"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "level": "INFO",
+      "name": "dispatcher",
+      "appenders": [
+        {
+          "name": "console"
+        },
+        {
+          "name": "mqtt"
+        }
+      ]
+    }
+  ],
+  "appenders": [
+    {
+      "name": "console",
+      "type": "Console"
+    },
+    {
+      "name": "mqtt",
+      "type": "MQTT",
+      "url": "${WODSS_MQTT_PROTOCOL}://${WODSS_MQTT_HOST}:${WODSS_MQTT_PORT}${WODSS_MQTT_PATH}",
+      "topic": "${WODSS_LOGGER_MQTT_TOPIC}"
+    }
+  ]
+}

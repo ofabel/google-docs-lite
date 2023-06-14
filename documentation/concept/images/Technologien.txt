@@ -1,0 +1,29 @@
+@startuml
+
+
+
+rectangle Frontend {
+    rectangle "Vue.js (TypeScript)" as Vue.js
+}
+
+rectangle Middleware {
+    rectangle RabbitMQ
+}
+
+rectangle Backend {
+    rectangle "Node.js (TypeScript)" as Node.js
+    database "Persistenz (TBD)" as Persistence
+}
+
+
+
+Vue.js --- RabbitMQ : "STOMP oder MQTT über WebSocket"
+RabbitMQ --- Node.js : "AMQP"
+Node.js - Persistence
+
+
+
+@enduml
+
+
+

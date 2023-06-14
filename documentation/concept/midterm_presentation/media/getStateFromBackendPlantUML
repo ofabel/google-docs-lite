@@ -1,0 +1,8 @@
+@startuml
+NewClient -> MessageQueue : subscribeForSync
+NewClient -> MessageQueue : getCurrentState
+MessageQueue -> Backend : getCurrentState
+Backend -> MessageQueue : currentState
+MessageQueue -> NewClient : currentState
+NewClient -> MessageQueue : unsubscribeFromSync
+@enduml

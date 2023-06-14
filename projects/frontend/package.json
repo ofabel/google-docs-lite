@@ -1,0 +1,98 @@
+{
+  "name": "@fhnw/wodss-frontend",
+  "version": "1.0.1",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "serve": "vue-cli-service serve",
+    "build:dev": "vue-cli-service build --mode development",
+    "build:prod": "vue-cli-service build --mode production",
+    "test:gui": "jest -i /tests/gui/",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@fhnw/wodss-shared": "file:../shared",
+    "@popperjs/core": "^2.11.5",
+    "@tiptap/extension-character-count": "^2.0.0-beta.26",
+    "@tiptap/extension-collaboration": "^2.0.0-beta.33",
+    "@tiptap/starter-kit": "^2.0.0-beta.183",
+    "@tiptap/vue-3": "^2.0.0-beta.90",
+    "bootstrap": "^5.1.3",
+    "bootstrap-icons": "^1.8.1",
+    "buffer": "^6.0.3",
+    "core-js": "^3.8.3",
+    "process": "^0.11.10",
+    "url": "^0.11.0",
+    "vue": "^3.2.13"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/bootstrap": "^5.1.10",
+    "@types/jest": "^27.4.1",
+    "@types/selenium-webdriver": "^4.0.18",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "@vue/cli-plugin-babel": "^5.0.4",
+    "@vue/cli-plugin-eslint": "^5.0.4",
+    "@vue/cli-plugin-typescript": "^5.0.4",
+    "@vue/cli-plugin-unit-jest": "^5.0.4",
+    "@vue/cli-plugin-vuex": "^5.0.4",
+    "@vue/cli-service": "^5.0.4",
+    "@vue/eslint-config-standard": "^6.1.0",
+    "@vue/eslint-config-typescript": "^10.0.0",
+    "@vue/test-utils": "^2.0.0-0",
+    "@vue/vue3-jest": "^27.0.0-alpha.1",
+    "babel-jest": "^27.0.6",
+    "chromedriver": "^99.0.0",
+    "eslint": "^8.11.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "geckodriver": "^3.0.1",
+    "jest": "^27.0.5",
+    "node-sass": "^7.0.1",
+    "sass-loader": "^12.6.0",
+    "selenium-webdriver": "^4.1.1",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "@vue/standard",
+      "@vue/typescript/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020
+    },
+    "rules": {
+      "semi": "off",
+      "space-before-function-paren": "off",
+      "object-curly-spacing": "off",
+      "multiline-ternary": "off"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}

@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="shared" type="JavaScriptTestRunnerJest">
+        <config-file value="$PROJECT_DIR$/projects/shared/jest.config.ts"/>
+        <node-interpreter value="project"/>
+        <node-options value=""/>
+        <jest-package value="$PROJECT_DIR$/projects/shared/node_modules/jest"/>
+        <working-dir value="$PROJECT_DIR$/projects/shared"/>
+        <jest-options value=" --detectOpenHandles --verbose --runInBand"/>
+        <envs/>
+        <scope-kind value="ALL"/>
+        <method v="2"/>
+    </configuration>
+</component>

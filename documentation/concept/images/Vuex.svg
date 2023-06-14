@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="151px" preserveAspectRatio="none" style="width:160px;height:151px;background:#FFFFFF;" version="1.1" viewBox="0 0 160 151" width="160px" zoomAndPan="magnify"><defs><filter height="300%" id="f5wcfmkpygjcs" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[a096b82a31643400ba33981c0f5b0661]
+entity Action--><rect fill="#FEFECE" filter="url(#f5wcfmkpygjcs)" height="36.4883" style="stroke:#000000;stroke-width:1.5;" width="64" x="46" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="44" x="56" y="30.5352">Action</text><!--MD5=[5c691934b5633fdd3b98f008c74cebb5]
+entity State--><rect fill="#FEFECE" filter="url(#f5wcfmkpygjcs)" height="36.4883" style="stroke:#000000;stroke-width:1.5;" width="54" x="7" y="103"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="34" x="17" y="126.5352">State</text><!--MD5=[854490cbfb8eedee4432d73740ee6d75]
+entity View--><rect fill="#FEFECE" filter="url(#f5wcfmkpygjcs)" height="36.4883" style="stroke:#000000;stroke-width:1.5;" width="52" x="96" y="103"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="32" x="106" y="126.5352">View</text><!--MD5=[b7b18e541c5f2cc88e0ed232fa97eded]
+link Action to State--><path d="M69.93,43.24 C62.67,58.74 51.98,81.59 44.15,98.32 " fill="none" id="Action-to-State" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="42.02,102.87,49.4518,96.4072,44.1352,98.3394,42.2029,93.0228,42.02,102.87" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[7345940851e353803fdbbaa244439a72]
+link State to View--><path d="M61.16,121 C71.01,121 80.86,121 90.71,121 " fill="none" id="State-to-View" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="95.86,121,86.86,117,90.86,121,86.86,125,95.86,121" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ae1eb4a19ff42640884ce2c7f44f4b6d]
+link View to Action--><path d="M113.98,102.87 C106.74,87.4 96.05,64.56 88.2,47.8 " fill="none" id="View-to-Action" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="86.07,43.24,86.2649,53.0869,88.1907,47.768,93.5096,49.6938,86.07,43.24" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[12756ec47ac2ed5e3f3f86278f666351]
+@startuml
+
+rectangle Action
+rectangle State
+rectangle View
+
+
+
+Action -> State
+State -> View
+View ..> Action
+
+
+
+@enduml
+
+PlantUML version 1.2022.1(Tue Feb 01 19:19:58 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: de
+Country: CH
+--></g></svg>

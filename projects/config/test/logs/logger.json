@@ -1,0 +1,19 @@
+{
+  "root": {
+    "level": "TRACE",
+    "name": "logger",
+    "appenders": [
+      {
+        "name": "console"
+      }
+    ]
+  },
+  "categories": [],
+  "appenders": [
+    {
+      "name": "console",
+      "type": "Console"
+    }
+  ]
+}
+

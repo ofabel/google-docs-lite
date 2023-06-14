@@ -1,0 +1,28 @@
+{
+  "root": {
+    "level": "TRACE",
+    "name": "logger",
+    "appenders": [
+      {
+        "name": "console"
+      },
+      {
+        "name": "file"
+      }
+    ]
+  },
+  "categories": [],
+  "appenders": [
+    {
+      "name": "console",
+      "type": "Console"
+    },
+    {
+      "name": "file",
+      "type": "File",
+      "path": "${WODSS_LOGGER_PATH}",
+      "interval": "1h"
+    }
+  ]
+}
+

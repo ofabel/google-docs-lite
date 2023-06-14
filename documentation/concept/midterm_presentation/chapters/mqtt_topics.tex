@@ -1,0 +1,16 @@
+\section{MQTT Topics}
+\begin{frame}
+    \frametitle{MQTT Topics}
+    \begin{itemize}
+        \item Clients können sich auf der MOM auf einem Topic subscriben.
+        \item Sie können in diesem Topic Messages absetzten und alle, die sich darauf registriert haben, erhalten die Message.
+        \item Aktuell führen wir zwei Topics:
+        \begin{description}
+            \item[SyncTopic] Hier ist das Backend registriert und wartet auf sync Anfragen von Clients.
+            Clients kommen nur kurz vorbei, um sich den aktuellen State zu abzufragen.
+            \item[PatchTopic] Hier werden alle State Änderungen in Form von YJS Patches verteilt.
+            Alle Clients + Backend sind hier registriert, wo sie ihre State Patches publizieren und fremde Patches empfangen.
+        \end{itemize}
+        \item Theoretisch wäre es möglich verschiedene Dokument Instanzen über verschiedene Topics zu verwalten.
+    \end{itemize}
+\end{frame}

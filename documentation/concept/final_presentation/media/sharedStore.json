@@ -1,0 +1,26 @@
+{
+  "_id": "722f6227-f684-4dc1-b0d2-27cc1f40ef1c",
+  "order": [
+    {
+      "id": "c6f36bd4-a63c-481d-ba09-d8330a217245"
+    },
+    {
+      "id": "64b70606-d655-4786-bbc0-842efc173119"
+    }
+  ],
+  "paragraphs": {
+    "c6f36bd4-a63c-481d-ba09-d8330a217245": {
+      "_id": "c6f36bd4-a63c-481d-ba09-d8330a217245",
+      "lastModified": "Wed, 06 Apr 2022 16:32:07 GMT",
+      "lastModifiedBy": "User 1",
+      "text": "Paragraph 1"
+    },
+    "64b70606-d655-4786-bbc0-842efc173119": {
+      "_id": "64b70606-d655-4786-bbc0-842efc173119",
+      "lastModified": "Wed, 06 Apr 2022 16:32:16 GMT",
+      "lastModifiedBy": "User 2",
+      "text": "Paragraph 2",
+      "lockedBy": "0c430152-0533-47f0-bbc5-1f9fd7df9472"
+    }
+  }
+}

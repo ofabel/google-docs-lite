@@ -1,0 +1,60 @@
+version: "3.9"
+services:
+  mosquitto:
+    build:
+      args:
+        - WODSS_MOSQUITTO_PORT_MQTT=${WODSS_MOSQUITTO_PORT_MQTT:?}
+        - WODSS_MOSQUITTO_PORT_WS=${WODSS_MOSQUITTO_PORT_WS:?}
+      context: ./mosquitto
+    ports:
+      - "${WODSS_MOSQUITTO_PORT_WS?:}:${WODSS_MOSQUITTO_PORT_WS?:}"
+      - "${WODSS_MOSQUITTO_PORT_MQTT?:}:${WODSS_MOSQUITTO_PORT_MQTT?:}"
+    restart: ${WODSS_DOCKER_RESTART:?}
+  frontend:
+    build:
+      dockerfile: ./frontend/Dockerfile
+      context: ./
+    ports:
+      - "${WODSS_FRONTEND_HTTP_PORT?:}:18080"
+    restart: ${WODSS_DOCKER_RESTART:?}
+    depends_on:
+      - mosquitto
+      - backend
+      - logger
+  backend:
+    env_file:
+      - ./backend/.env
+    build:
+      dockerfile: ./backend/Dockerfile
+      context: ./
+    deploy:
+      replicas: ${WODSS_BACKEND_DOCKER_REPLICAS:?}
+    restart: ${WODSS_DOCKER_RESTART:?}
+    depends_on:
+      - mosquitto
+      - mongodb
+      - logger
+  mongodb:
+    env_file:
+      - ./mongodb/.env
+    build:
+      dockerfile: ./Dockerfile
+      context: ./mongodb
+    volumes:
+      - "${WODSS_MONGODB_DOCKER_VOLUME:?}:/data/db"
+    hostname: ${WODSS_MONGODB_HOST}
+    restart: ${WODSS_DOCKER_RESTART:?}
+  logger:
+    env_file:
+      - ./logger/.env
+    build:
+      dockerfile: ./logger/Dockerfile
+      context: ./
+    restart: ${WODSS_DOCKER_RESTART:?}
+    volumes:
+      - "${WODSS_LOGGER_DOCKER_VOLUME:?}:${WODSS_LOGGER_PATH:?}"
+    depends_on:
+      - mosquitto
+volumes:
+  mongodb:
+  logger:

@@ -1,0 +1,65 @@
+name: Build Pipeline
+on: [ push ]
+
+jobs:
+  test:
+    runs-on: self-hosted
+    if: contains(github.ref, '/documentation') == false
+    env:
+      WODSS_MOSQUITTO_PASSWORD_BACKEND: ${{secrets.TEST_MQTT_PASSWORD_BACKEND}}
+      WODSS_MOSQUITTO_PASSWORD_FRONTEND: ${{secrets.TEST_MQTT_PASSWORD_FRONTEND}}
+      WODSS_MOSQUITTO_PASSWORD_MONITOR: ${{secrets.TEST_MQTT_PASSWORD_MONITOR}}
+      WODSS_MOSQUITTO_PASSWORD_ADMIN: ${{secrets.TEST_MOSQUITTO_PASSWORD_ADMIN}}
+      WODSS_MONGODB_PASSWORD: ${{secrets.TEST_MONGODB_USER_PASSWORD}}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+
+      - name: Set up node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.14.2
+
+      - name: Initialize environment
+        run: cd projects && bash ./setup.sh test
+
+      - name: Start Test Message Broker
+        run: cd projects/mosquitto && bash ./start.sh
+
+      - name: Ping MQTT
+        run: "cd projects/mosquitto && export $(grep -v '^#' ./.env | xargs) && ping -c 4 $WODSS_MOSQUITTO_HOST"
+
+      - name: Install dependencies
+        run: cd projects && bash ./install.sh ci
+
+      - name: Run unit tests Shared
+        run: cd projects/shared && npm run test
+
+      - name: Run unit tests Backend
+        run: cd projects/backend && npm run test
+
+      - name: stop test mosquitto
+        if: always()
+        run: docker stop wodss-mosquitto-test && docker rm $_
+
+  deploy:
+    runs-on: self-hosted
+    needs: test
+    if: github.ref == 'refs/heads/master'
+    env:
+      WODSS_MOSQUITTO_PASSWORD_BACKEND: ${{secrets.PROD_MQTT_PASSWORD_BACKEND}}
+      WODSS_MOSQUITTO_PASSWORD_FRONTEND: ${{secrets.PROD_MQTT_PASSWORD_FRONTEND}}
+      WODSS_MOSQUITTO_PASSWORD_MONITOR: ${{secrets.PROD_MQTT_PASSWORD_MONITOR}}
+      WODSS_MOSQUITTO_PASSWORD_ADMIN: ${{secrets.PROD_MOSQUITTO_PASSWORD_ADMIN}}
+      WODSS_MONGODB_PASSWORD: ${{secrets.PROD_MONGODB_USER_PASSWORD}}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+
+      - name: Set up node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.14.2
+
+      - name: Deploy
+        run: cd projects && bash ./serve.sh prod

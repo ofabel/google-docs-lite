@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="313px" preserveAspectRatio="none" style="width:231px;height:313px;background:#FFFFFF;" version="1.1" viewBox="0 0 231 313" width="231px" zoomAndPan="magnify"><defs><filter height="300%" id="f1grw559iwireu" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[fca8240bc233c06068545f9c8883ae88]
+cluster Frontend--><rect fill="#FFFFFF" filter="url(#f1grw559iwireu)" height="183" style="stroke:#000000;stroke-width:1.5;" width="212" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="64" x="81" y="22.5352">Frontend</text><!--MD5=[4e1a3510868d06a507f098bb08f0dae0]
+cluster Middleware--><rect fill="#FFFFFF" filter="url(#f1grw559iwireu)" height="87" style="stroke:#000000;stroke-width:1.5;" width="120" x="53" y="214"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="83" x="71.5" y="229.5352">Middleware</text><!--MD5=[73f6a17c1b3c0060c69bb778c0525ad6]
+entity Vue.js--><rect fill="#FEFECE" filter="url(#f1grw559iwireu)" height="36.4883" style="stroke:#000000;stroke-width:1.5;" width="61" x="23.5" y="42"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="33.5" y="65.5352">Vue.js</text><!--MD5=[85780d40b0ec75e94b9424c12f0cb9b3]
+entity Vuex--><rect fill="#FEFECE" filter="url(#f1grw559iwireu)" height="36.4883" style="stroke:#000000;stroke-width:1.5;" width="55" x="119.5" y="42"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="35" x="129.5" y="65.5352">Vuex</text><!--MD5=[4954e3f78136b7d260e69cd6f103bd33]
+entity Library--><rect fill="#FEFECE" filter="url(#f1grw559iwireu)" height="36.4883" style="stroke:#000000;stroke-width:1.5;" width="180" x="23" y="138"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="160" x="33" y="161.5352">STOMP or MQTT library</text><!--MD5=[b3c1be909746e9d5905c61ed679b686f]
+entity RabbitMQ--><rect fill="#FEFECE" filter="url(#f1grw559iwireu)" height="36.4883" style="stroke:#000000;stroke-width:1.5;" width="87" x="69.5" y="249"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67" x="79.5" y="272.5352">RabbitMQ</text><!--MD5=[78fc658a8f37ff87aa809d08cc599f12]
+reverse link Vue.js to Vuex--><path d="M89.66,60 C99.5,60 109.34,60 119.17,60 " fill="none" id="Vue.js-backto-Vuex" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="84.52,60,93.52,64,89.52,60,93.52,56,84.52,60" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5b11c38cb345aff79eae74a2b351a7d5]
+link Vuex to Library--><path d="M138.96,83.23 C133.53,98.25 126.38,118.01 120.96,132.99 " fill="none" id="Vuex-Library" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="119.2,137.87,126.0227,130.7672,120.9007,133.1681,118.4997,128.0461,119.2,137.87" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="140.76,78.24,133.9373,85.3428,139.0593,82.9419,141.4603,88.0639,140.76,78.24" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[36c675a2baabd16625a2a8cef51799ae]
+link Library to RabbitMQ--><path d="M113,179.04 C113,197.83 113,224.73 113,243.63 " fill="none" id="Library-RabbitMQ" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="113,248.73,117,239.73,113,243.73,109,239.73,113,248.73" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="113,174.03,109,183.03,113,179.03,117,183.03,113,174.03" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[4ed240c56fe915b8ae182091ab689ad3]
+@startuml
+
+rectangle Frontend {
+    rectangle Vue.js
+    rectangle Vuex
+    rectangle "STOMP or MQTT library" as Library
+}
+
+rectangle Middleware {
+    rectangle RabbitMQ
+}
+
+
+
+Vue.js <- Vuex
+Vuex <- -> Library
+Library <- -> RabbitMQ
+
+@enduml
+
+PlantUML version 1.2022.1(Tue Feb 01 19:19:58 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: de
+Country: CH
+--></g></svg>

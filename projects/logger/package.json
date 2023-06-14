@@ -1,0 +1,40 @@
+{
+  "name": "@fhnw/wodss-logger",
+  "version": "1.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=16.14.0"
+  },
+  "main": "./src/main.ts",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "serve": "ts-node -r dotenv/config -r ./src/bootstrap.ts ./src/main.ts",
+    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@fhnw/wodss-shared": "file:../shared",
+    "dotenv": "^16.0.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "eslint": "^8.10.0",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.3"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ]
+  }
+}

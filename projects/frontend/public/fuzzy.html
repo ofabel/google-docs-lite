@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>@fhnw/wodss-frontend:fuzzyTest</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .control {
+      display: flex;
+      height: 2rem;
+    }
+
+    .frames {
+      display: flex;
+      flex-grow: 1;
+    }
+
+    iframe {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      border: 0;
+    }
+  </style>
+</head>
+
+<body>
+<div class="control">
+  <label for="opPerSec">op/sec</label>
+  <input id="opPerSec" type="range" min="-2000" max="-80" value="-500"/>
+  <label for="numOfFrames">Instances</label>
+  <input id="numOfFrames" type="number" min="1" max="10" value="1"/>
+  <label for="minLatency">Minimum Latency</label>
+  <input id="minLatency" type="number" min="0" max="1000" step="1" value="0"/>
+  <label for="maxLatency">Maximum Latency</label>
+  <input id="maxLatency" type="number" min="0" max="1000" step="1" value="0"/>
+  <button type="button" id="start">Start</button>
+</div>
+<div class="frames" id="frames">
+</div>
+
+<script>
+  const start = document.querySelector('#start');
+  const frames = document.querySelector('#frames');
+  const numOfFrames = document.querySelector('#numOfFrames');
+  const opPerSec = document.querySelector('#opPerSec');
+  const minLatency = document.querySelector('#minLatency');
+  const maxLatency = document.querySelector('#maxLatency');
+
+  const run = (iframe) => {
+    const check = setInterval(() => {
+      const toggle = iframe.contentDocument?.querySelector('#toggle-fuzzy-test');
+
+      if (toggle) {
+        clearInterval(check);
+
+        toggle.click();
+      }
+    }, 250);
+  };
+
+  start.onclick = () => {
+    [...frames.children].forEach(child => child.remove());
+
+    for (let i = 0; i < numOfFrames.value; i++) {
+      const iframe = document.createElement('iframe');
+      const opts = window.location.hash.split('.', 4);
+
+      opts[1] = minLatency.value;
+      opts[2] = maxLatency.value;
+
+      iframe.src = `./index.html?fuzzy${opts.join('.')}`;
+
+      frames.append(iframe);
+
+      iframe.contentWindow.fuzzySpeed = opPerSec.valueAsNumber;
+      iframe.onload = () => run(iframe);
+    }
+  };
+</script>
+</body>
+
+</html>
